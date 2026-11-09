@@ -35,6 +35,8 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(script, /The Dreamer's Oasis, a green sanctuary and turquoise lake enclosed by snowy mountain peaks/);
   assert.match(script, /trivera\.jpg/);
   assert.match(script, /Trivera's domed Tribunal overlooking the Unity Garden and the crowded neutral city/);
+  assert.match(script, /verimere\.jpg/);
+  assert.match(script, /Verimere's treetop libraries, glass halls, bridges, and waterfalls beneath an immense forest canopy/);
   assert.match(html, /data-location="zions-vale"/);
   assert.match(html, /--x:57\.51%;--y:64\.90%/);
   assert.match(html, /Select a location symbol/);
