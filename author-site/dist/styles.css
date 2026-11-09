@@ -39,3 +39,6 @@
 
 /* Illustrated location field notes */
 .map-note{padding:0 clamp(2rem,4vw,4rem) clamp(2rem,4vw,4rem)}.location-image{margin:0 calc(clamp(2rem,4vw,4rem) * -1) 2rem;aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid rgba(196,154,90,.35);background:var(--night)}.location-image[hidden]{display:none}.location-image img{width:100%;height:100%;object-fit:cover}
+
+/* Mapwright-aligned invisible points of interest */
+.map-pin,.map-pin:hover,.map-pin.active{width:52px;height:52px;border:0;background:transparent;box-shadow:none;outline:0}.map-pin span,.map-pin.active:after{display:none}.map-pin:hover,.map-pin:focus-visible{width:52px;height:52px;background:rgba(196,154,90,.16);outline:2px solid var(--brass);outline-offset:2px}.map-pin:focus-visible{border-radius:4px}
