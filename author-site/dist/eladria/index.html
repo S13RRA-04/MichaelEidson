@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#121815" />
+  <meta name="description" content="Explore Eladria through an interactive map, artifacts, and spoiler-light character dossiers from The Eightfold Covenant." />
+  <meta property="og:title" content="Explore Eladria | The Eightfold Covenant" />
+  <meta property="og:description" content="Open the map, examine the relics, and meet the people at the heart of The Mercy of Ruin." />
+  <meta property="og:image" content="./eladria-map.png" />
+  <meta property="og:type" content="website" />
+  <title>Explore Eladria | The Eightfold Covenant</title>
+  <link rel="icon" href="../mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="eladria-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="Michael Eidson, home"><span class="wordmark-mark"><img src="../mark.svg" alt="" /></span><span><strong>Michael Eidson</strong><small>Author of The Eightfold Covenant</small></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+    <nav id="main-nav" aria-label="Main navigation"><a href="#map">Map</a><a href="#artifacts">Artifacts</a><a href="#characters">Characters</a><a href="/lore/">Field guide</a><a class="nav-cta" href="/">Author site <span aria-hidden="true">&#8599;</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="atlas-hero">
+      <div class="atlas-hero-copy reveal"><p class="eyebrow brass">The world beyond the page</p><h1>Explore<br /><em>Eladria.</em></h1><p>Open the map. Follow the roads. Examine the objects people would kill to possess, and meet the travelers caught in their wake.</p><div class="hero-actions"><a class="button" href="#map">Enter the atlas <span aria-hidden="true">&#8595;</span></a><a class="text-link light" href="/lore/">Read the field guide</a></div></div>
+      <div class="atlas-coordinates reveal" aria-hidden="true"><span>Three nations</span><strong>One fragile order</strong><span>Eight currents</span></div>
+      <aside class="lore-warning reveal"><strong>Spoiler-light</strong><span>Designed for new readers. Profiles reveal premises and early-story details only.</span></aside>
+    </section>
+    <section class="atlas-section map-section" id="map">
+      <div class="atlas-heading reveal"><div><span class="section-index">01</span><p class="eyebrow">The known world</p></div><h2>A continent under pressure.</h2><p>Select a marked location to open its field note. Use the controls to examine the original map from <em>The Mercy of Ruin</em>.</p></div>
+      <div class="map-explorer reveal">
+        <div class="map-toolbar" aria-label="Map controls"><span>Eladria, recorded era</span><div><button type="button" data-map-action="out" aria-label="Zoom map out">&#8722;</button><output id="map-zoom" aria-live="polite">100%</output><button type="button" data-map-action="in" aria-label="Zoom map in">+</button><button type="button" data-map-action="reset">Reset</button></div></div>
+        <div class="map-layout">
+          <div class="map-viewport" tabindex="0" aria-label="Scrollable map of Eladria"><div class="map-canvas" id="map-canvas"><img src="./eladria-map.png" alt="Map of Eladria showing Valorra, Cognitia, Sanctaria, Trivera, the Frostmyr, and surrounding lands" /><button class="map-pin active" type="button" style="--x:57%;--y:63%" data-location="zions-vale" aria-label="Open field note for Zion's Vale"><span></span></button><button class="map-pin" type="button" style="--x:38%;--y:45%" data-location="trivera" aria-label="Open field note for Trivera"><span></span></button><button class="map-pin" type="button" style="--x:19%;--y:39%" data-location="verimere" aria-label="Open field note for Verimere"><span></span></button><button class="map-pin" type="button" style="--x:58%;--y:50%" data-location="brima-bastia" aria-label="Open field note for Brima Bastia"><span></span></button><button class="map-pin" type="button" style="--x:7%;--y:9%" data-location="oasis" aria-label="Open field note for the Dreamer's Oasis"><span></span></button></div></div>
+          <aside class="map-note" aria-live="polite"><p class="eyebrow brass" id="location-region">Valorran frontier</p><p class="map-note-index" id="location-index">01 / 05</p><h3 id="location-name">Zion's Vale</h3><p id="location-description">A hard-used settlement where the southern road meets the frontier. Its burning sets the first great journey in motion.</p><div class="map-legend"><span><i class="legend-dot"></i> Selectable location</span><span>Scroll to pan when zoomed</span></div></aside>
+        </div>
+      </div>
+    </section>
+    <section class="atlas-section artifact-cabinet" id="artifacts">
+      <div class="atlas-heading reveal"><div><span class="section-index">02</span><p class="eyebrow brass">The archive cabinet</p></div><h2>Objects remember.</h2><p>In Eladria, power rarely stays abstract. It becomes crystal, steel, inheritance—and evidence.</p></div>
+      <div class="artifact-explorer reveal">
+        <div class="artifact-tabs" role="tablist" aria-label="Choose an artifact"><button class="active" type="button" role="tab" aria-selected="true" data-artifact="wellstone"><span>01</span>Wellstone</button><button type="button" role="tab" aria-selected="false" data-artifact="chargers"><span>02</span>Chargers</button><button type="button" role="tab" aria-selected="false" data-artifact="medallion"><span>03</span>The Medallion</button><button type="button" role="tab" aria-selected="false" data-artifact="raiment"><span>04</span>The Raiment</button></div>
+        <article class="artifact-focus" role="tabpanel" aria-live="polite"><div class="artifact-glyph" id="artifact-glyph" aria-hidden="true">W</div><div><p class="eyebrow" id="artifact-class">Emonantic crystal</p><h3 id="artifact-name">Wellstone</h3><p class="artifact-thesis" id="artifact-thesis">Feeling, held.</p><p id="artifact-description">Crystal capable of storing a single emotional current. It lights lamps, powers engines, serves as currency, and carries a more dangerous purpose inside a charge.</p></div><dl><div><dt>Known use</dt><dd id="artifact-use">Power, trade, weaponry</dd></div><div><dt>Archive status</dt><dd id="artifact-status">Common / regulated</dd></div></dl></article>
+      </div>
+    </section>
+    <section class="atlas-section characters-section" id="characters">
+      <div class="atlas-heading reveal"><div><span class="section-index">03</span><p class="eyebrow">Traveling company</p></div><h2>Meet the people on the road.</h2><p>Four lives enter the story from different edges of Eladria. None will leave it unchanged.</p></div>
+      <div class="character-grid">
+        <article class="character-card reveal"><div class="character-number">01</div><p class="eyebrow">The former Sentinel</p><h3>Jovan Ga'al</h3><p>A former Valorran Marine and Triveran lawman who has learned exactly how much justice can cost. Zion's Vale gives him one more choice to make.</p><blockquote>He knows how institutions fail—and what remains when they do.</blockquote><span class="character-current">Valorra &middot; Anger / Trust</span></article>
+        <article class="character-card reveal"><div class="character-number">02</div><p class="eyebrow">The Dreamer</p><h3>Eazra Horama</h3><p>A scholar of visions raised in the secluded Dreamer's Oasis. A shared darkness calls him beyond the only world he has known.</p><blockquote>He can read what the future feels like. Understanding it is harder.</blockquote><span class="character-current">The Oasis &middot; Fear / Wonder</span></article>
+        <article class="character-card reveal"><div class="character-number">03</div><p class="eyebrow">The Ranger</p><h3>Rhyse Zetema</h3><p>A Valorran Ranger with an easy manner, a sharp eye, and a trail of questions leading toward something larger than frontier crime.</p><blockquote>He wears humor lightly and duty like an old scar.</blockquote><span class="character-current">Valorra &middot; Trust / Anticipation</span></article>
+        <article class="character-card reveal"><div class="character-number">04</div><p class="eyebrow">The historian</p><h3>Lorcan</h3><p>A widely traveled scholar whose medallions and languages hint at a life spent gathering more than knowledge.</p><blockquote>Every ruin is a record. Every record leaves something out.</blockquote><span class="character-current">The road &middot; Curiosity / Grief</span></article>
+      </div>
+    </section>
+    <section class="atlas-cta reveal"><p class="eyebrow brass">The map is only the beginning</p><h2>Walk into the story.</h2><p><em>The Mercy of Ruin</em> &middot; Book One of The Eightfold Covenant</p><div><a class="button brass-button" href="https://www.amazon.com/Mercy-Ruin-Book-Eightfold-Covenant-ebook/dp/B0HPYVZHXL?th=1" target="_blank" rel="noopener noreferrer">Read on Amazon <span aria-hidden="true">&#8599;</span></a><a class="text-link light" href="/lore/">Continue to the field guide</a></div></section>
+  </main>
+  <footer><a class="wordmark" href="/"><span class="wordmark-mark"><img src="../mark.svg" alt="" /></span><span><strong>Michael Eidson</strong><small>Epic fantasy with a frontier soul</small></span></a><p>&copy; <span id="year"></span> Michael Eidson. All rights reserved.</p><div class="footer-links"><a class="text-link light" href="mailto:contact@michaeleidson.com">Contact</a><a class="text-link light" href="#main">Back to top &#8593;</a></div></footer>
+  <script src="../script.js"></script><script src="./eladria.js"></script>
+</body>
+</html>
