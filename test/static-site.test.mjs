@@ -29,6 +29,8 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /zions-vale\.png/);
   assert.match(script, /havenbrook\.jpg/);
   assert.match(script, /Havenbrook beside its river, rail depot, civic square, and mountain roads/);
+  assert.match(script, /brima-bastia\.jpg/);
+  assert.match(script, /Brima Bastia's mountain fortress, walled capital, military gate, and red-and-gold banners/);
   assert.match(html, /data-location="zions-vale"/);
   assert.match(html, /--x:57\.51%;--y:64\.90%/);
   assert.match(html, /Select a location symbol/);
