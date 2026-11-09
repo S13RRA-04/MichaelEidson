@@ -56,3 +56,115 @@ document.querySelectorAll("[data-artifact]").forEach((tab) => tab.addEventListen
   document.getElementById("artifact-use").textContent = artifact.use;
   document.getElementById("artifact-status").textContent = artifact.status;
 }));
+
+const emonariBranches = {
+  joy: { name: "Joy", color: "#e0b34f", colorName: "gold", thesis: "You make light that others can stand inside.", description: "You meet hardship by protecting the possibility of delight. A Joy Emonari does not ignore darkness; they insist it has not won." },
+  trust: { name: "Trust", color: "#b9d99e", colorName: "pale green", thesis: "You build the ground beneath a company.", description: "Loyalty, connection, and earned faith guide you. A Trust Emonari turns separate people into something stronger than any one of them." },
+  fear: { name: "Fear", color: "#58a66c", colorName: "green", thesis: "You notice the danger before it has a name.", description: "Caution is not cowardice in your hands. A Fear Emonari reads risk clearly, survives what others overlook, and keeps watch when certainty fails." },
+  surprise: { name: "Surprise", color: "#9fc9da", colorName: "pale blue", thesis: "You change the shape of the moment.", description: "You are alert to openings, reversals, and the unexpected. A Surprise Emonari thrives where a rigid plan breaks and something new must happen now." },
+  sadness: { name: "Sadness", color: "#5f89bd", colorName: "blue", thesis: "You remember what the world cannot afford to lose.", description: "You honor consequence and carry memory with care. A Sadness Emonari finds strength in grief without pretending the wound was never there." },
+  disgust: { name: "Disgust", color: "#9b72aa", colorName: "purple", thesis: "You know what must not be allowed to stand.", description: "Your instincts sharpen around corruption, cruelty, and falsehood. A Disgust Emonari draws clear boundaries and refuses to call poison medicine." },
+  anger: { name: "Anger", color: "#c85848", colorName: "red", thesis: "You move when the line has been crossed.", description: "Injustice turns feeling into action for you. An Anger Emonari is force, courage, and refusal—most powerful when rage serves a purpose beyond itself." },
+  anticipation: { name: "Anticipation", color: "#cf8140", colorName: "orange", thesis: "You are already preparing for what comes next.", description: "Patterns, possibilities, and momentum draw your eye forward. An Anticipation Emonari makes readiness feel almost like prophecy." }
+};
+
+const attunementQuestions = [
+  { scenario: "A warning at dusk", prompt: "A rider arrives with word that danger is one night away. What do you do first?", answers: [
+    ["Fortify the gate and dare it to come.", "anger"], ["Find every weak point and prepare an escape.", "fear"], ["Gather the town and give everyone a task.", "trust"], ["Set a trap no invader would expect.", "surprise"]
+  ] },
+  { scenario: "A buried record", prompt: "You uncover a truth powerful people erased. What matters most?", answers: [
+    ["Preserving the names of those who paid for it.", "sadness"], ["Exposing the rot that required the lie.", "disgust"], ["Understanding what the truth will change next.", "anticipation"], ["Giving people a reason to believe change is possible.", "joy"]
+  ] },
+  { scenario: "The company falters", prompt: "Your companions are exhausted and beginning to turn on one another. You…", answers: [
+    ["Remind them why they chose to travel together.", "trust"], ["Lay out the road ahead and the next reachable goal.", "anticipation"], ["Confront the grievance before it poisons the group.", "anger"], ["Make room for what everyone has lost.", "sadness"]
+  ] },
+  { scenario: "The plan breaks", prompt: "The careful plan fails in its first minute. Your instinct is to…", answers: [
+    ["Use the confusion before anyone else recovers.", "surprise"], ["Find the absurdity that keeps panic from winning.", "joy"], ["Stop, listen, and locate the hidden threat.", "fear"], ["Abandon the compromised plan completely.", "disgust"]
+  ] },
+  { scenario: "Power offered", prompt: "Someone offers you authority with one troubling condition. You focus on…", answers: [
+    ["Who will be hurt if you refuse to challenge it.", "anger"], ["What accepting it would make you become.", "disgust"], ["Whether the person offering it has earned belief.", "trust"], ["The danger hidden inside the condition.", "fear"]
+  ] },
+  { scenario: "A road unopened", prompt: "At the edge of the known map, what pulls you onward?", answers: [
+    ["The wonder of seeing what no one has described.", "joy"], ["The stories left behind by those who vanished there.", "sadness"], ["The chance that the world is stranger than expected.", "surprise"], ["The feeling that what comes next has already begun.", "anticipation"]
+  ] }
+];
+
+const quizStart = document.getElementById("quiz-start");
+if (quizStart) {
+  const quizIntro = document.getElementById("quiz-intro");
+  const quizQuestion = document.getElementById("quiz-question");
+  const quizResult = document.getElementById("quiz-result");
+  const quizAnswers = document.getElementById("quiz-answers");
+  const quizWellstone = document.getElementById("quiz-wellstone");
+  const wellstoneStatus = document.getElementById("wellstone-status");
+  const quizLive = document.getElementById("quiz-live");
+  let questionIndex = 0;
+  let choices = [];
+
+  const resetWellstone = () => {
+    quizWellstone.classList.remove("attuned");
+    quizWellstone.style.removeProperty("--wellstone-color");
+    quizResult.style.removeProperty("--wellstone-color");
+    quizWellstone.setAttribute("aria-label", "An unlit wellstone awaiting attunement");
+    wellstoneStatus.textContent = "Listening";
+  };
+
+  const renderQuestion = () => {
+    const question = attunementQuestions[questionIndex];
+    document.getElementById("quiz-step").textContent = `Question ${questionIndex + 1} of ${attunementQuestions.length}`;
+    document.getElementById("quiz-progress-bar").style.width = `${((questionIndex + 1) / attunementQuestions.length) * 100}%`;
+    document.getElementById("quiz-scenario").textContent = question.scenario;
+    document.getElementById("quiz-prompt").textContent = question.prompt;
+    quizAnswers.replaceChildren();
+    question.answers.forEach(([label, branch], answerIndex) => {
+      const answer = document.createElement("button");
+      answer.type = "button";
+      answer.innerHTML = `<span>${String.fromCharCode(65 + answerIndex)}</span>${label}`;
+      answer.addEventListener("click", () => {
+        choices.push(branch);
+        questionIndex += 1;
+        if (questionIndex < attunementQuestions.length) {
+          renderQuestion();
+          document.getElementById("quiz-prompt").focus();
+        } else {
+          revealResult();
+        }
+      });
+      quizAnswers.append(answer);
+    });
+    quizLive.textContent = `Question ${questionIndex + 1}: ${question.prompt}`;
+  };
+
+  const revealResult = () => {
+    const scores = Object.fromEntries(Object.keys(emonariBranches).map((branch) => [branch, 0]));
+    choices.forEach((branch, index) => { scores[branch] += 1 + ((attunementQuestions.length - index) / 100); });
+    const resultKey = Object.keys(scores).sort((a, b) => scores[b] - scores[a])[0];
+    const result = emonariBranches[resultKey];
+    quizQuestion.hidden = true;
+    quizResult.hidden = false;
+    document.getElementById("quiz-result-name").textContent = result.name;
+    document.getElementById("quiz-result-thesis").textContent = result.thesis;
+    document.getElementById("quiz-result-description").textContent = result.description;
+    quizWellstone.style.setProperty("--wellstone-color", result.color);
+    quizResult.style.setProperty("--wellstone-color", result.color);
+    quizWellstone.classList.add("attuned");
+    quizWellstone.setAttribute("aria-label", `A wellstone glowing ${result.colorName} for the ${result.name} branch`);
+    wellstoneStatus.textContent = `${result.name} · ${result.colorName}`;
+    quizLive.textContent = `Attunement complete. Your Emonari branch is ${result.name}.`;
+    document.getElementById("quiz-result-name").focus();
+  };
+
+  quizStart.addEventListener("click", () => {
+    quizIntro.hidden = true;
+    quizResult.hidden = true;
+    quizQuestion.hidden = false;
+    questionIndex = 0;
+    choices = [];
+    resetWellstone();
+    renderQuestion();
+    document.getElementById("quiz-prompt").setAttribute("tabindex", "-1");
+    document.getElementById("quiz-prompt").focus();
+  });
+
+  document.getElementById("quiz-retake").addEventListener("click", () => quizStart.click());
+}

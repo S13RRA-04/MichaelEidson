@@ -56,6 +56,16 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(script, /mapScale/);
   assert.match(script, /artifact-description/);
   assert.match(script, /imageWrap\.hidden/);
+  assert.match(html, /id="attunement"/);
+  assert.match(html, /id="quiz-wellstone"/);
+  assert.match(html, /Touch the wellstone/);
+  assert.equal((script.match(/colorName:/g) || []).length, 8);
+  for (const branch of ["joy", "trust", "fear", "surprise", "sadness", "disgust", "anger", "anticipation"]) {
+    assert.match(script, new RegExp(`\\b${branch}: \\{ name:`));
+  }
+  assert.equal((script.match(/scenario:/g) || []).length, 6);
+  assert.match(script, /quizWellstone\.classList\.add\("attuned"\)/);
+  assert.match(script, /Attunement complete/);
 });
 
 test("lore page contains published canon and no newsletter placeholder", async () => {

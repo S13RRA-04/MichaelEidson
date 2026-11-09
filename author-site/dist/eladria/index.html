@@ -18,7 +18,7 @@
   <header class="site-header">
     <a class="wordmark" href="/" aria-label="Michael Eidson, home"><span class="wordmark-mark"><img src="../mark.svg" alt="" /></span><span><strong>Michael Eidson</strong><small>Author of The Eightfold Covenant</small></span></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
-    <nav id="main-nav" aria-label="Main navigation"><a href="#map">Map</a><a href="#artifacts">Artifacts</a><a href="#characters">Characters</a><a href="/lore/">Field guide</a><a class="nav-cta" href="/">Author site <span aria-hidden="true">&#8599;</span></a></nav>
+    <nav id="main-nav" aria-label="Main navigation"><a href="#map">Map</a><a href="#artifacts">Artifacts</a><a href="#attunement">Attunement</a><a href="#characters">Characters</a><a href="/lore/">Field guide</a><a class="nav-cta" href="/">Author site <span aria-hidden="true">&#8599;</span></a></nav>
   </header>
   <main id="main">
     <section class="atlas-hero">
@@ -43,8 +43,41 @@
         <article class="artifact-focus" role="tabpanel" aria-live="polite"><div class="artifact-glyph" id="artifact-glyph" aria-hidden="true">W</div><div><p class="eyebrow" id="artifact-class">Emonantic crystal</p><h3 id="artifact-name">Wellstone</h3><p class="artifact-thesis" id="artifact-thesis">Feeling, held.</p><p id="artifact-description">Crystal capable of storing a single emotional current. It lights lamps, powers engines, serves as currency, and carries a more dangerous purpose inside a charge.</p></div><dl><div><dt>Known use</dt><dd id="artifact-use">Power, trade, weaponry</dd></div><div><dt>Archive status</dt><dd id="artifact-status">Common / regulated</dd></div></dl></article>
       </div>
     </section>
+    <section class="atlas-section attunement-section" id="attunement">
+      <div class="atlas-heading reveal"><div><span class="section-index">03</span><p class="eyebrow brass">Wellstone attunement</p></div><h2>Which current answers you?</h2><p>Six choices. Eight emotional currents. Let the wellstone reveal the Emonari branch that most closely matches how you meet the world.</p></div>
+      <div class="attunement-shell reveal">
+        <div class="wellstone-stage" aria-live="polite">
+          <div class="wellstone-halo" aria-hidden="true"></div>
+          <div class="wellstone" id="quiz-wellstone" role="img" aria-label="An unlit wellstone awaiting attunement"><span></span></div>
+          <p class="wellstone-status" id="wellstone-status">Uncharged</p>
+        </div>
+        <div class="quiz-panel">
+          <div id="quiz-intro">
+            <p class="eyebrow">The test begins</p>
+            <h3>A current cannot be chosen. Only recognized.</h3>
+            <p>There are no wrong answers. Choose the response that feels most instinctive, not the one that sounds most heroic.</p>
+            <button class="button brass-button" id="quiz-start" type="button">Touch the wellstone</button>
+          </div>
+          <div id="quiz-question" hidden>
+            <div class="quiz-progress"><span id="quiz-step">Question 1 of 6</span><span class="quiz-progress-track"><span id="quiz-progress-bar"></span></span></div>
+            <p class="eyebrow" id="quiz-scenario">The road divides</p>
+            <h3 id="quiz-prompt"></h3>
+            <div class="quiz-answers" id="quiz-answers"></div>
+          </div>
+          <div class="quiz-result" id="quiz-result" hidden>
+            <p class="eyebrow">The stone answers</p>
+            <p class="quiz-result-kicker">Your Emonari branch is</p>
+            <h3 id="quiz-result-name" tabindex="-1"></h3>
+            <p class="quiz-result-thesis" id="quiz-result-thesis"></p>
+            <p id="quiz-result-description"></p>
+            <button class="text-link quiz-retake" id="quiz-retake" type="button">Retake the attunement</button>
+          </div>
+          <p class="sr-only" id="quiz-live" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
     <section class="atlas-section characters-section" id="characters">
-      <div class="atlas-heading reveal"><div><span class="section-index">03</span><p class="eyebrow">Traveling company</p></div><h2>Meet the people on the road.</h2><p>Four lives enter the story from different edges of Eladria. None will leave it unchanged.</p></div>
+      <div class="atlas-heading reveal"><div><span class="section-index">04</span><p class="eyebrow">Traveling company</p></div><h2>Meet the people on the road.</h2><p>Four lives enter the story from different edges of Eladria. None will leave it unchanged.</p></div>
       <div class="character-grid">
         <article class="character-card reveal"><div class="character-number">01</div><p class="eyebrow">The former Sentinel</p><h3>Jovan Ga'al</h3><p>A former Valorran Marine and Triveran lawman who has learned exactly how much justice can cost. Zion's Vale gives him one more choice to make.</p><blockquote>He knows how institutions fail—and what remains when they do.</blockquote><span class="character-current">Valorra &middot; Anger / Trust</span></article>
         <article class="character-card reveal"><div class="character-number">02</div><p class="eyebrow">The Dreamer</p><h3>Eazra Horama</h3><p>A scholar of visions raised in the secluded Dreamer's Oasis. A shared darkness calls him beyond the only world he has known.</p><blockquote>He can read what the future feels like. Understanding it is harder.</blockquote><span class="character-current">The Oasis &middot; Fear / Wonder</span></article>
