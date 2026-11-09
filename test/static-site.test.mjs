@@ -25,6 +25,7 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   ]);
 
   assert.match(html, /eladria-map\.png/);
+  assert.match(html, /zions-vale\.png/);
   assert.match(html, /data-location="zions-vale"/);
   assert.match(html, /data-artifact="wellstone"/);
   for (const character of ["Jovan Ga'al", "Eazra Horama", "Rhyse Zetema", "Lorcan"]) {
@@ -33,6 +34,7 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /Spoiler-light/);
   assert.match(script, /mapScale/);
   assert.match(script, /artifact-description/);
+  assert.match(script, /imageWrap\.hidden/);
 });
 
 test("lore page contains published canon and no newsletter placeholder", async () => {
