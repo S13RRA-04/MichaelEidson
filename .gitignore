@@ -1,0 +1,7 @@
+.env
+node_modules/
+.wrangler/
+*.tar.gz
+author-site-git-failed/
+author-site-sites-git-backup/
+author-site/.openai/

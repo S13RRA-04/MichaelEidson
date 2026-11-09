@@ -1,0 +1,12 @@
+{
+  "name": "michael-eidson-author-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "deploy:check": "wrangler deploy --dry-run"
+  },
+  "devDependencies": {
+    "wrangler": "4.158.0"
+  }
+}
