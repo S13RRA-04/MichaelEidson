@@ -1,4 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="32" fill="#1d2520"/>
-  <text x="32" y="39" text-anchor="middle" fill="#f3efe6" font-family="Georgia,serif" font-size="21">ME</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">The Eightfold Covenant mark</title>
+  <desc id="desc">An eight-spoked compass star within concentric rings.</desc>
+  <g fill="none" stroke="#c49a5a" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="100" cy="100" r="86" stroke-width="3"/>
+    <circle cx="100" cy="100" r="60" stroke-width="2" opacity=".8"/>
+    <circle cx="100" cy="100" r="22" stroke-width="3"/>
+    <path d="M100 13 112 77 100 100 88 77Z M187 100 123 112 100 100 123 88Z M100 187 88 123 100 100 112 123Z M13 100 77 88 100 100 77 112Z" stroke-width="3"/>
+    <path d="M39 39 83 78 100 100 78 83Z M161 39 122 83 100 100 117 78Z M161 161 117 122 100 100 122 117Z M39 161 78 117 100 100 83 122Z" stroke-width="2.5"/>
+    <path d="M100 4 106 14 100 24 94 14Z M196 100 186 106 176 100 186 94Z M100 196 94 186 100 176 106 186Z M4 100 14 94 24 100 14 106Z" fill="#c49a5a" stroke-width="1"/>
+    <circle cx="100" cy="100" r="7" fill="#c49a5a" stroke-width="1"/>
+  </g>
 </svg>
