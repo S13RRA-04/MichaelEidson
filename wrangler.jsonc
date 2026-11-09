@@ -1,15 +1,22 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "michael-eidson-author-site",
+  "main": "./src/index.mjs",
   "compatibility_date": "2026-11-08",
   "routes": [
     {
       "pattern": "michaeleidson.com",
       "custom_domain": true
+    },
+    {
+      "pattern": "www.michaeleidson.com",
+      "custom_domain": true
     }
   ],
   "assets": {
     "directory": "./author-site/dist",
+    "binding": "ASSETS",
+    "run_worker_first": true,
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   }
