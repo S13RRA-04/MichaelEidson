@@ -10,6 +10,8 @@ test("homepage exposes the real contact address and lore journey", async () => {
 
   assert.match(html, /mailto:contact@michaeleidson\.com/);
   assert.match(html, /href="\/lore\/"/);
+  assert.match(html, /The Ruin of Nations/);
+  assert.match(html, /tentatively titled/i);
   assert.doesNotMatch(html, /newsletter|mailing list|subscribe/i);
 });
 
