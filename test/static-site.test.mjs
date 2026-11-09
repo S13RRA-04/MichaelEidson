@@ -28,6 +28,7 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.doesNotMatch(html, /eladria-map\.png/);
   assert.match(html, /zions-vale\.png/);
   assert.match(html, /data-location="zions-vale"/);
+  assert.match(html, /--x:56\.8%;--y:66\.2%/);
   assert.match(html, /data-artifact="wellstone"/);
   for (const character of ["Jovan Ga'al", "Eazra Horama", "Rhyse Zetema", "Lorcan"]) {
     assert.match(html, new RegExp(character));
