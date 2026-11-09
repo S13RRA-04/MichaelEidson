@@ -74,6 +74,8 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /alt="Lorcan carrying a travel staff and book, dressed in layered robes and an orange scarf"/);
   assert.match(html, /Five lives enter the story/);
   assert.match(html, /Lorcans?[^<]*Uhuran half-sister|Lorcan's Uhuran half-sister/);
+  assert.match(html, /\.\/sela\.jpg/);
+  assert.match(html, /alt="Sela seated watchfully in the dark uniform and traveling coat of a veteran soldier"/);
   assert.match(html, /Spoiler-light/);
   assert.match(script, /mapScale/);
   assert.match(script, /artifact-description/);
