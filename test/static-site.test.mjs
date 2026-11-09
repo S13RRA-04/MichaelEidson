@@ -66,6 +66,8 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /alt="Jovan Ga'al in his frontier Ranger coat, broad-brimmed hat, and weathered armor"/);
   assert.match(html, /\.\/eazra-horama\.jpg/);
   assert.match(html, /alt="Eazra Horama in layered Dreamer robes and a warm umber cloak"/);
+  assert.match(html, /\.\/rhyse-zetema\.jpg/);
+  assert.match(html, /alt="Rhyse Zetema seated in his weathered Ranger coat with his hat and decorated bracer"/);
   assert.match(html, /Spoiler-light/);
   assert.match(script, /mapScale/);
   assert.match(script, /artifact-description/);
