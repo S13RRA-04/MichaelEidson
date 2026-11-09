@@ -28,7 +28,7 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.doesNotMatch(html, /eladria-map\.png/);
   assert.match(html, /zions-vale\.png/);
   assert.match(html, /data-location="zions-vale"/);
-  assert.match(html, /--x:56\.8%;--y:66\.2%/);
+  assert.match(html, /--x:57\.51%;--y:64\.90%/);
   assert.match(html, /Select a location symbol/);
   assert.match(html, /--x:43\.11%;--y:41\.16%/);
   assert.match(html, /--x:23\.35%;--y:38\.59%/);
