@@ -24,7 +24,8 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
     readFile(eladriaScriptPath, "utf8")
   ]);
 
-  assert.match(html, /eladria-map\.png/);
+  assert.match(html, /eladria-map\.jpg/);
+  assert.doesNotMatch(html, /eladria-map\.png/);
   assert.match(html, /zions-vale\.png/);
   assert.match(html, /data-location="zions-vale"/);
   assert.match(html, /data-artifact="wellstone"/);
