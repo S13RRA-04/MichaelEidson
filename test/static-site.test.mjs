@@ -60,6 +60,8 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   for (const character of ["Jovan Ga'al", "Eazra Horama", "Rhyse Zetema", "Lorcan"]) {
     assert.match(html, new RegExp(character));
   }
+  assert.match(html, /\.\/jovan-gaal\.jpg/);
+  assert.match(html, /alt="Jovan Ga'al in his frontier Ranger coat, broad-brimmed hat, and weathered armor"/);
   assert.match(html, /Spoiler-light/);
   assert.match(script, /mapScale/);
   assert.match(script, /artifact-description/);
