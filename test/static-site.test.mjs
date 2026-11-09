@@ -76,6 +76,11 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /Lorcans?[^<]*Uhuran half-sister|Lorcan's Uhuran half-sister/);
   assert.match(html, /\.\/sela\.jpg/);
   assert.match(html, /alt="Sela seated watchfully in the dark uniform and traveling coat of a veteran soldier"/);
+  assert.match(html, /class="atlas-index"/);
+  assert.match(html, /Thirteen marked locations/);
+  assert.ok(html.indexOf('id="map"') < html.indexOf('id="characters"'));
+  assert.ok(html.indexOf('id="characters"') < html.indexOf('id="artifacts"'));
+  assert.ok(html.indexOf('id="artifacts"') < html.indexOf('id="attunement"'));
   assert.match(html, /Spoiler-light/);
   assert.match(script, /mapScale/);
   assert.match(script, /artifact-description/);
