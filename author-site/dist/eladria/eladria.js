@@ -8,7 +8,7 @@ const locations = {
   divinae: { region: "Sanctaria", index: "07 / 13", name: "Divinae", description: "The marked capital of Sanctaria, inland from the northern coast and east of the Frostmyr." },
   aperito: { region: "Northern Cognitia", index: "08 / 13", name: "Aperito", description: "A settlement between Cognitia's forested country and the mountain roads to the north." },
   marinport: { region: "Cognitian coast", index: "09 / 13", name: "Marinport", description: "A western harbor where Cognitia meets the sea." },
-  havenbrook: { region: "Valorra", index: "10 / 13", name: "Havenbrook", description: "A Valorran settlement north of Zion's Vale, near the eastern mountain country." },
+  havenbrook: { region: "Valorra", index: "10 / 13", name: "Havenbrook", description: "A Valorran settlement north of Zion's Vale, near the eastern mountain country.", image: "./havenbrook.jpg", imageAlt: "Havenbrook beside its river, rail depot, civic square, and mountain roads" },
   wardengate: { region: "Al-Andaluqia", index: "11 / 13", name: "Wardengate", description: "A fortified settlement guarding the mountain road toward Valorra." },
   uigeschan: { region: "Maritara", index: "12 / 13", name: "Uigeschan", description: "An inland Maritaran settlement north of the Dread Strait." },
   ceolpurt: { region: "Maritaran coast", index: "13 / 13", name: "Ceolpurt", description: "A port on Maritara's southeastern coast." }
