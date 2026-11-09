@@ -32,6 +32,19 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /Select a location symbol/);
   assert.match(html, /--x:43\.11%;--y:41\.16%/);
   assert.match(html, /--x:23\.35%;--y:38\.59%/);
+  assert.match(html, /--x:24\.87%;--y:19\.41%/);
+  assert.match(html, /--x:54\.48%;--y:21\.65%/);
+  assert.match(html, /--x:24\.71%;--y:25\.36%/);
+  assert.match(html, /--x:18\.83%;--y:40\.19%/);
+  assert.match(html, /--x:59\.06%;--y:58\.99%/);
+  assert.match(html, /--x:25\.86%;--y:70\.95%/);
+  assert.match(html, /--x:69\.58%;--y:79\.56%/);
+  assert.match(html, /--x:74\.79%;--y:86\.02%/);
+  assert.equal((html.match(/class="map-pin(?: active)?"/g) || []).length, 13);
+  for (const location of ["respus", "divinae", "aperito", "marinport", "havenbrook", "wardengate", "uigeschan", "ceolpurt"]) {
+    assert.match(html, new RegExp(`data-location="${location}"`));
+    assert.match(script, new RegExp(`\\b${location}:`));
+  }
   assert.match(html, /--x:58\.56%;--y:52\.13%/);
   assert.match(html, /--x:16\.94%;--y:9\.17%/);
   assert.doesNotMatch(html, /legend-dot/);

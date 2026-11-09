@@ -1,9 +1,17 @@
 const locations = {
-  "zions-vale": { region: "Valorran frontier", index: "01 / 05", name: "Zion's Vale", description: "A hard-used settlement where the southern road meets the frontier. Its burning sets the first great journey in motion.", image: "./zions-vale.png", imageAlt: "Zion's Vale, a frontier settlement beneath the mountains" },
-  trivera: { region: "Neutral city", index: "02 / 05", name: "Trivera", description: "Seat of the Tribunal, the Sovereignty Assembly, and the Emonantic Academy. It belongs to no nation—and therefore to all three." },
-  verimere: { region: "Cognitia", index: "03 / 05", name: "Verimere", description: "A capital of libraries, registers, and inquiry. Its scholars preserve more of Eladria's history than most rulers find comfortable." },
-  "brima-bastia": { region: "Valorra", index: "04 / 05", name: "Brima Bastia", description: "The fortress-capital of Valorra and home of the Martial Tribunal, built where mountains narrow the roads of empire." },
-  oasis: { region: "Beyond the Frostmyr", index: "05 / 05", name: "The Dreamer's Oasis", description: "A valley of perpetual summer enclosed by ice, where Dreamers study the currents of feeling and the shapes of possible futures." }
+  "zions-vale": { region: "Valorran frontier", index: "01 / 13", name: "Zion's Vale", description: "A hard-used settlement where the southern road meets the frontier. Its burning sets the first great journey in motion.", image: "./zions-vale.png", imageAlt: "Zion's Vale, a frontier settlement beneath the mountains" },
+  trivera: { region: "Neutral city", index: "02 / 13", name: "Trivera", description: "Seat of the Tribunal, the Sovereignty Assembly, and the Emonantic Academy. It belongs to no nation—and therefore to all three." },
+  verimere: { region: "Cognitia", index: "03 / 13", name: "Verimere", description: "A capital of libraries, registers, and inquiry. Its scholars preserve more of Eladria's history than most rulers find comfortable." },
+  "brima-bastia": { region: "Valorra", index: "04 / 13", name: "Brima Bastia", description: "The fortress-capital of Valorra and home of the Martial Tribunal, built where mountains narrow the roads of empire." },
+  oasis: { region: "Beyond the Frostmyr", index: "05 / 13", name: "The Dreamer's Oasis", description: "A valley of perpetual summer enclosed by ice, where Dreamers study the currents of feeling and the shapes of possible futures." },
+  respus: { region: "Northern Cognitia", index: "06 / 13", name: "Respus", description: "A northern settlement marked among the approaches below the Frostmyr." },
+  divinae: { region: "Sanctaria", index: "07 / 13", name: "Divinae", description: "The marked capital of Sanctaria, inland from the northern coast and east of the Frostmyr." },
+  aperito: { region: "Northern Cognitia", index: "08 / 13", name: "Aperito", description: "A settlement between Cognitia's forested country and the mountain roads to the north." },
+  marinport: { region: "Cognitian coast", index: "09 / 13", name: "Marinport", description: "A western harbor where Cognitia meets the sea." },
+  havenbrook: { region: "Valorra", index: "10 / 13", name: "Havenbrook", description: "A Valorran settlement north of Zion's Vale, near the eastern mountain country." },
+  wardengate: { region: "Al-Andaluqia", index: "11 / 13", name: "Wardengate", description: "A fortified settlement guarding the mountain road toward Valorra." },
+  uigeschan: { region: "Maritara", index: "12 / 13", name: "Uigeschan", description: "An inland Maritaran settlement north of the Dread Strait." },
+  ceolpurt: { region: "Maritaran coast", index: "13 / 13", name: "Ceolpurt", description: "A port on Maritara's southeastern coast." }
 };
 document.querySelectorAll(".map-pin").forEach((pin) => pin.addEventListener("click", () => {
   const location = locations[pin.dataset.location];
