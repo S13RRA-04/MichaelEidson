@@ -61,7 +61,7 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /--x:16\.94%;--y:9\.17%/);
   assert.doesNotMatch(html, /legend-dot/);
   assert.match(html, /data-artifact="wellstone"/);
-  for (const character of ["Jovan Ga'al", "Eazra Horama", "Rhyse Zetema", "Lorcan"]) {
+  for (const character of ["Jovan Ga'al", "Eazra Horama", "Rhyse Zetema", "Lorcan", "Sela"]) {
     assert.match(html, new RegExp(character));
   }
   assert.match(html, /\.\/jovan-gaal\.jpg/);
@@ -70,6 +70,10 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /alt="Eazra Horama in layered Dreamer robes and a warm umber cloak"/);
   assert.match(html, /\.\/rhyse-zetema\.jpg/);
   assert.match(html, /alt="Rhyse Zetema seated in his weathered Ranger coat with his hat and decorated bracer"/);
+  assert.match(html, /\.\/lorcan\.jpg/);
+  assert.match(html, /alt="Lorcan carrying a travel staff and book, dressed in layered robes and an orange scarf"/);
+  assert.match(html, /Five lives enter the story/);
+  assert.match(html, /Lorcans?[^<]*Uhuran half-sister|Lorcan's Uhuran half-sister/);
   assert.match(html, /Spoiler-light/);
   assert.match(script, /mapScale/);
   assert.match(script, /artifact-description/);
