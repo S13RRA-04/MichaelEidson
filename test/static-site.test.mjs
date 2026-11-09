@@ -29,7 +29,11 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /zions-vale\.png/);
   assert.match(html, /data-location="zions-vale"/);
   assert.match(html, /--x:56\.8%;--y:66\.2%/);
-  assert.match(html, /Select a printed place name/);
+  assert.match(html, /Select a location symbol/);
+  assert.match(html, /--x:43\.11%;--y:41\.16%/);
+  assert.match(html, /--x:23\.35%;--y:38\.59%/);
+  assert.match(html, /--x:58\.56%;--y:52\.13%/);
+  assert.match(html, /--x:16\.94%;--y:9\.17%/);
   assert.doesNotMatch(html, /legend-dot/);
   assert.match(html, /data-artifact="wellstone"/);
   for (const character of ["Jovan Ga'al", "Eazra Horama", "Rhyse Zetema", "Lorcan"]) {
