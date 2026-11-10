@@ -33,6 +33,8 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(script, /Havenbrook beside its river, rail depot, civic square, and mountain roads/);
   assert.match(script, /respus\.jpg/);
   assert.match(script, /Respus, a pilgrim town above an abandoned mountain quarry with travelers, stables, and a stream/);
+  assert.match(script, /Aperito's terraced vineyards, busy river quays, stone bridges, and hilltop citadel/);
+  assert.match(script, /image: "\.\/aperito\.jpg"/);
   assert.match(script, /brima-bastia\.jpg/);
   assert.match(script, /Brima Bastia's mountain fortress, walled capital, military gate, and red-and-gold banners/);
   assert.match(script, /dreamers-oasis\.jpg/);
