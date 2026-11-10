@@ -13,6 +13,8 @@ test("homepage exposes the real contact address and lore journey", async () => {
   assert.match(html, /mailto:contact@michaeleidson\.com/);
   assert.match(html, /href="\/lore\/"/);
   assert.match(html, /href="\/eladria\/"/);
+  assert.match(html, /href="https:\/\/www\.patreon\.com\/MichaelEidson"/);
+  assert.match(html, /Join me on Patreon/);
   assert.match(html, /The Ruin of Nations/);
   assert.match(html, /tentatively titled/i);
   assert.doesNotMatch(html, /newsletter|mailing list|subscribe/i);
@@ -90,6 +92,7 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.ok(html.indexOf('id="characters"') < html.indexOf('id="artifacts"'));
   assert.ok(html.indexOf('id="artifacts"') < html.indexOf('id="attunement"'));
   assert.match(html, /Spoiler-light/);
+  assert.match(html, /href="https:\/\/www\.patreon\.com\/MichaelEidson"/);
   assert.match(script, /mapScale/);
   assert.match(script, /artifact-description/);
   assert.match(script, /imageWrap\.hidden/);
@@ -107,6 +110,8 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
 
 test("lore page contains published canon and no newsletter placeholder", async () => {
   const html = await readFile(lorePath, "utf8");
+
+  assert.match(html, /href="https:\/\/www\.patreon\.com\/MichaelEidson"/);
 
   for (const term of ["Valorra", "Cognitia", "Sanctaria", "Trivera", "Wellstone", "The Raiment"]) {
     assert.match(html, new RegExp(term));
