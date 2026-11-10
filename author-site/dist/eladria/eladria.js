@@ -14,6 +14,8 @@ const locations = {
   ceolpurt: { region: "Maritaran coast", index: "13 / 14", name: "Ceolpurt", description: "A port on Maritara's southeastern coast." },
   "dom-mendacium": { region: "Northern mountains", index: "14 / 14", name: "Dom'Mendacium", description: "A ruined mountain fortress reached by twin bridges, hidden among the frozen approaches beyond Cognitia.", image: "./dom-mendacium.jpg", imageAlt: "Dom'Mendacium, a ruined fortress beyond twin bridges in the snowy northern mountains" }
 };
+const currentChronicle = { era: "era-1", eraLabel: "Era One", book: "book-1", bookLabel: "Book One", title: "The Mercy of Ruin" };
+Object.entries(locations).forEach(([key, location]) => { locations[key] = { ...currentChronicle, ...location }; });
 const domMendaciumPin = document.createElement("button");
 domMendaciumPin.className = "map-pin";
 domMendaciumPin.type = "button";
@@ -23,9 +25,16 @@ domMendaciumPin.style.setProperty("--x", "20.35%");
 domMendaciumPin.style.setProperty("--y", "13.32%");
 domMendaciumPin.append(document.createElement("span"));
 document.getElementById("map-canvas").append(domMendaciumPin);
-document.querySelectorAll(".map-pin").forEach((pin) => pin.addEventListener("click", () => {
+const mapPins = [...document.querySelectorAll(".map-pin")];
+mapPins.forEach((pin) => {
   const location = locations[pin.dataset.location];
-  document.querySelectorAll(".map-pin").forEach((item) => item.classList.toggle("active", item === pin));
+  pin.dataset.era = location.era;
+  pin.dataset.book = location.book;
+});
+const openLocation = (pin) => {
+  const location = locations[pin.dataset.location];
+  mapPins.forEach((item) => item.classList.toggle("active", item === pin));
+  document.getElementById("location-chronicle").textContent = `${location.eraLabel} · ${location.bookLabel}`;
   document.getElementById("location-region").textContent = location.region;
   document.getElementById("location-index").textContent = location.index;
   document.getElementById("location-name").textContent = location.name;
@@ -37,7 +46,33 @@ document.querySelectorAll(".map-pin").forEach((pin) => pin.addEventListener("cli
     image.src = location.image;
     image.alt = location.imageAlt;
   }
+};
+mapPins.forEach((pin) => pin.addEventListener("click", () => openLocation(pin)));
+
+const chronicleSelection = { era: "era-1", book: "book-1" };
+const applyChronicleFilter = () => {
+  const visiblePins = mapPins.filter((pin) => {
+    const visible = pin.dataset.era === chronicleSelection.era && pin.dataset.book === chronicleSelection.book;
+    pin.hidden = !visible;
+    return visible;
+  });
+  const selectedEra = document.querySelector(`[data-era-filter="${chronicleSelection.era}"]`);
+  const selectedBook = document.querySelector(`[data-book-filter="${chronicleSelection.book}"]`);
+  document.getElementById("chronicle-status").innerHTML = `<span>Now exploring</span> ${selectedEra.querySelector("span").textContent} · ${selectedBook.querySelector("span").textContent} · <em>${selectedBook.querySelector("strong").textContent}</em> · ${visiblePins.length} locations`;
+  if (!visiblePins.some((pin) => pin.classList.contains("active")) && visiblePins[0]) openLocation(visiblePins[0]);
+};
+document.querySelectorAll("[data-era-filter], [data-book-filter]").forEach((control) => control.addEventListener("click", () => {
+  const group = control.dataset.eraFilter ? "era" : "book";
+  const attribute = group === "era" ? "data-era-filter" : "data-book-filter";
+  chronicleSelection[group] = control.dataset[`${group}Filter`];
+  document.querySelectorAll(`[${attribute}]`).forEach((item) => {
+    const selected = item === control;
+    item.classList.toggle("active", selected);
+    item.setAttribute("aria-pressed", String(selected));
+  });
+  applyChronicleFilter();
 }));
+applyChronicleFilter();
 let mapScale = 1;
 const mapCanvas = document.getElementById("map-canvas");
 const mapZoom = document.getElementById("map-zoom");

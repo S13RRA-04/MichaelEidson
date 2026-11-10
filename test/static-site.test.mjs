@@ -83,6 +83,16 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /\.\/sela\.jpg/);
   assert.match(html, /alt="Sela seated watchfully in the dark uniform and traveling coat of a veteran soldier"/);
   assert.match(html, /class="atlas-index"/);
+  assert.match(html, /id="chronicle"/);
+  assert.match(html, /Enter Eladria by era and book/);
+  assert.match(html, /data-era-filter="era-1"/);
+  assert.match(html, /data-book-filter="book-1"/);
+  assert.match(html, /Book Two/);
+  assert.match(html, /The Ruin of Nations/);
+  assert.match(html, /Expedition forthcoming/);
+  assert.match(script, /const currentChronicle = \{ era: "era-1"/);
+  assert.match(script, /applyChronicleFilter/);
+  assert.match(script, /pin\.dataset\.book/);
   assert.match(html, /Fourteen marked locations/);
   assert.match(script, /"dom-mendacium"/);
   assert.match(script, /20\.35%/);
