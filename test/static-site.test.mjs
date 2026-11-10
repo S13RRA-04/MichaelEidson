@@ -77,7 +77,13 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /\.\/sela\.jpg/);
   assert.match(html, /alt="Sela seated watchfully in the dark uniform and traveling coat of a veteran soldier"/);
   assert.match(html, /class="atlas-index"/);
-  assert.match(html, /Thirteen marked locations/);
+  assert.match(html, /Fourteen marked locations/);
+  assert.match(script, /"dom-mendacium"/);
+  assert.match(script, /20\.35%/);
+  assert.match(script, /13\.32%/);
+  assert.match(script, /\.\/dom-mendacium\.jpg/);
+  assert.match(script, /Dom'Mendacium, a ruined fortress beyond twin bridges/);
+  assert.equal((script.match(/index: "\d{2} \/ 14"/g) || []).length, 14);
   assert.ok(html.indexOf('id="map"') < html.indexOf('id="characters"'));
   assert.ok(html.indexOf('id="characters"') < html.indexOf('id="artifacts"'));
   assert.ok(html.indexOf('id="artifacts"') < html.indexOf('id="attunement"'));

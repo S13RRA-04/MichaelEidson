@@ -39,6 +39,9 @@
 @media(max-width:760px){.atlas-hero{min-height:calc(100vh - 78px);background:var(--night)}.atlas-index{grid-template-columns:1fr}.atlas-index a,.atlas-index a:nth-child(2){min-height:72px;border-right:0;border-bottom:1px solid rgba(233,225,210,.12)}.atlas-index a:last-child{border-bottom:0}.atlas-heading{grid-template-columns:1fr}.atlas-heading>p{grid-column:auto}.map-toolbar>span{display:none}.map-toolbar{justify-content:flex-end}.map-layout{min-height:0}.map-viewport{height:62vw;min-height:360px}.map-canvas{min-width:680px}.artifact-explorer{grid-template-columns:1fr}.artifact-tabs{display:grid;grid-template-columns:1fr 1fr}.artifact-tabs button{min-height:66px}.artifact-focus{grid-template-columns:1fr}.artifact-glyph{width:110px}.artifact-focus dl{grid-column:auto}.character-grid{grid-template-columns:1fr}.character-card,.character-card:nth-child(n+3),.character-card:last-child{grid-column:auto;min-height:430px;padding:clamp(2rem,4vw,4rem)}}
 @media(prefers-reduced-motion:reduce){.map-pin.active:after{animation:none}.map-canvas{transition:none}}
 
+/* Native Mapwright symbols are the location hit targets. */
+.map-pin{width:40px;height:40px;border:0;background:transparent;box-shadow:none}.map-pin span{display:none}.map-pin:hover,.map-pin:focus-visible,.map-pin.active{width:44px;height:44px;border-color:transparent;outline:none;box-shadow:0 0 0 2px var(--brass),0 0 0 5px rgba(18,24,21,.65)}
+
 /* Illustrated location field notes */
 .map-note{padding:0 clamp(2rem,4vw,4rem) clamp(2rem,4vw,4rem)}.location-image{margin:0 calc(clamp(2rem,4vw,4rem) * -1) 2rem;aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid rgba(196,154,90,.35);background:var(--night)}.location-image[hidden]{display:none}.location-image img{width:100%;height:100%;object-fit:cover}
 
