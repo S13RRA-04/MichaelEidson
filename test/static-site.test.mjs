@@ -46,7 +46,7 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(script, /divinae\.jpg/);
   assert.match(script, /Divinae's gilded domed sanctuary overlooking a ceremonial square in Sanctaria/);
   assert.match(html, /data-location="zions-vale"/);
-  assert.match(html, /--x:57\.51%;--y:64\.90%/);
+  assert.match(html, /--x:58\.15%;--y:66\.07%/);
   assert.match(html, /Select a location symbol/);
   assert.match(html, /--x:43\.11%;--y:41\.16%/);
   assert.match(html, /--x:23\.35%;--y:38\.59%/);
@@ -54,7 +54,7 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /--x:54\.48%;--y:21\.65%/);
   assert.match(html, /--x:24\.71%;--y:25\.36%/);
   assert.match(html, /--x:18\.83%;--y:40\.19%/);
-  assert.match(html, /--x:59\.06%;--y:58\.99%/);
+  assert.match(html, /--x:59\.45%;--y:61\.78%/);
   assert.match(html, /--x:25\.86%;--y:70\.95%/);
   assert.match(html, /--x:69\.58%;--y:79\.56%/);
   assert.match(html, /--x:74\.79%;--y:86\.02%/);
