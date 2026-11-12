@@ -79,7 +79,7 @@ const mapViewport = document.querySelector(".map-viewport");
 const mapZoom = document.getElementById("map-zoom");
 const setMapScale = (nextScale, focalX = mapViewport.clientWidth / 2, focalY = mapViewport.clientHeight / 2) => {
   const previousScale = mapScale;
-  mapScale = Math.min(3, Math.max(1, Math.round(nextScale * 4) / 4));
+  mapScale = Math.min(3, Math.max(1, Math.round(nextScale * 20) / 20));
   const contentX = (mapViewport.scrollLeft + focalX) / previousScale;
   const contentY = (mapViewport.scrollTop + focalY) / previousScale;
   mapCanvas.style.width = `${mapScale * 100}%`;
@@ -94,33 +94,56 @@ document.querySelectorAll("[data-map-action]").forEach((control) => control.addE
   if (control.dataset.mapAction === "reset") setMapScale(1);
 }));
 mapViewport.addEventListener("wheel", (event) => {
-  if (!event.ctrlKey && !event.metaKey) return;
   event.preventDefault();
   const bounds = mapViewport.getBoundingClientRect();
-  setMapScale(mapScale + (event.deltaY < 0 ? 0.25 : -0.25), event.clientX - bounds.left, event.clientY - bounds.top);
+  setMapScale(mapScale + (event.deltaY < 0 ? 0.15 : -0.15), event.clientX - bounds.left, event.clientY - bounds.top);
 }, { passive: false });
 mapViewport.addEventListener("keydown", (event) => {
   if (event.key === "+" || event.key === "=") { event.preventDefault(); setMapScale(mapScale + 0.25); }
   if (event.key === "-") { event.preventDefault(); setMapScale(mapScale - 0.25); }
   if (event.key === "0") { event.preventDefault(); setMapScale(1); }
 });
+const activePointers = new Map();
 let panStart = null;
+let pinchStart = null;
 mapViewport.addEventListener("pointerdown", (event) => {
   if (event.button !== 0 || event.target.closest(".map-pin")) return;
-  panStart = { x: event.clientX, y: event.clientY, left: mapViewport.scrollLeft, top: mapViewport.scrollTop };
+  activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   mapViewport.classList.add("is-panning");
   mapViewport.setPointerCapture(event.pointerId);
+  if (activePointers.size === 1) {
+    panStart = { x: event.clientX, y: event.clientY, left: mapViewport.scrollLeft, top: mapViewport.scrollTop };
+  }
+  if (activePointers.size === 2) {
+    const [first, second] = [...activePointers.values()];
+    pinchStart = { distance: Math.hypot(second.x - first.x, second.y - first.y), scale: mapScale };
+    panStart = null;
+  }
 });
 mapViewport.addEventListener("pointermove", (event) => {
-  if (!panStart) return;
-  mapViewport.scrollLeft = panStart.left - (event.clientX - panStart.x);
-  mapViewport.scrollTop = panStart.top - (event.clientY - panStart.y);
+  if (!activePointers.has(event.pointerId)) return;
+  activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+  if (activePointers.size === 2 && pinchStart) {
+    const [first, second] = [...activePointers.values()];
+    const distance = Math.hypot(second.x - first.x, second.y - first.y);
+    const bounds = mapViewport.getBoundingClientRect();
+    const centerX = (first.x + second.x) / 2 - bounds.left;
+    const centerY = (first.y + second.y) / 2 - bounds.top;
+    setMapScale(pinchStart.scale * distance / pinchStart.distance, centerX, centerY);
+    return;
+  }
+  if (panStart) {
+    mapViewport.scrollLeft = panStart.left - (event.clientX - panStart.x);
+    mapViewport.scrollTop = panStart.top - (event.clientY - panStart.y);
+  }
 });
 const stopMapPan = (event) => {
-  if (!panStart) return;
-  panStart = null;
-  mapViewport.classList.remove("is-panning");
+  activePointers.delete(event.pointerId);
   if (mapViewport.hasPointerCapture(event.pointerId)) mapViewport.releasePointerCapture(event.pointerId);
+  pinchStart = null;
+  const remaining = [...activePointers.values()][0];
+  panStart = remaining ? { x: remaining.x, y: remaining.y, left: mapViewport.scrollLeft, top: mapViewport.scrollTop } : null;
+  if (!remaining) mapViewport.classList.remove("is-panning");
 };
 mapViewport.addEventListener("pointerup", stopMapPan);
 mapViewport.addEventListener("pointercancel", stopMapPan);

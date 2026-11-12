@@ -113,10 +113,14 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(script, /const setMapScale/);
   assert.match(script, /Math\.min\(3, Math\.max\(1/);
   assert.match(script, /addEventListener\("wheel"/);
+  assert.match(script, /const activePointers = new Map\(\)/);
+  assert.match(script, /Math\.hypot/);
+  assert.match(script, /pinchStart\.scale \* distance \/ pinchStart\.distance/);
   assert.match(script, /addEventListener\("pointermove"/);
   assert.match(script, /addEventListener\("keydown"/);
-  assert.match(html, /Drag or scroll to pan/);
-  assert.match(html, /Ctrl \+ scroll or \+ \/ &minus; to zoom/);
+  assert.match(html, /Drag to pan the map/);
+  assert.match(html, /Mouse wheel, pinch, or \+ \/ &minus; to zoom/);
+  assert.match(styles, /\.map-viewport\{[^}]*touch-action:none/);
   assert.match(script, /artifact-description/);
   assert.match(script, /imageWrap\.hidden/);
   assert.match(html, /id="attunement"/);
