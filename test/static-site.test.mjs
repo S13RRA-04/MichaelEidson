@@ -111,12 +111,15 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /href="https:\/\/www\.patreon\.com\/MichaelEidson"/);
   assert.match(script, /mapScale/);
   assert.match(script, /const setMapScale/);
+  assert.match(script, /requestAnimationFrame\(\(\) => setMapScale\(1\.25\)\)/);
+  assert.match(html, /id="map-zoom" aria-live="polite">125%/);
   assert.match(script, /Math\.min\(3, Math\.max\(1/);
   assert.match(script, /addEventListener\("wheel"/);
   assert.match(script, /const activePointers = new Map\(\)/);
   assert.match(script, /Math\.hypot/);
   assert.match(script, /pinchStart\.scale \* distance \/ pinchStart\.distance/);
   assert.match(script, /addEventListener\("pointermove"/);
+  assert.match(script, /mapViewport\.scrollBy\(\{ left:/);
   assert.match(script, /addEventListener\("keydown"/);
   assert.match(html, /Drag to pan the map/);
   assert.match(html, /Mouse wheel, pinch, or \+ \/ &minus; to zoom/);

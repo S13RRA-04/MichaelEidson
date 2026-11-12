@@ -88,6 +88,7 @@ const setMapScale = (nextScale, focalX = mapViewport.clientWidth / 2, focalY = m
   mapZoom.value = `${Math.round(mapScale * 100)}%`;
   mapZoom.textContent = mapZoom.value;
 };
+requestAnimationFrame(() => setMapScale(1.25));
 document.querySelectorAll("[data-map-action]").forEach((control) => control.addEventListener("click", () => {
   if (control.dataset.mapAction === "in") setMapScale(mapScale + 0.25);
   if (control.dataset.mapAction === "out") setMapScale(mapScale - 0.25);
@@ -108,11 +109,12 @@ let panStart = null;
 let pinchStart = null;
 mapViewport.addEventListener("pointerdown", (event) => {
   if (event.button !== 0 || event.target.closest(".map-pin")) return;
+  event.preventDefault();
   activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   mapViewport.classList.add("is-panning");
   mapViewport.setPointerCapture(event.pointerId);
   if (activePointers.size === 1) {
-    panStart = { x: event.clientX, y: event.clientY, left: mapViewport.scrollLeft, top: mapViewport.scrollTop };
+    panStart = { x: event.clientX, y: event.clientY };
   }
   if (activePointers.size === 2) {
     const [first, second] = [...activePointers.values()];
@@ -122,6 +124,7 @@ mapViewport.addEventListener("pointerdown", (event) => {
 });
 mapViewport.addEventListener("pointermove", (event) => {
   if (!activePointers.has(event.pointerId)) return;
+  event.preventDefault();
   activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   if (activePointers.size === 2 && pinchStart) {
     const [first, second] = [...activePointers.values()];
@@ -133,8 +136,8 @@ mapViewport.addEventListener("pointermove", (event) => {
     return;
   }
   if (panStart) {
-    mapViewport.scrollLeft = panStart.left - (event.clientX - panStart.x);
-    mapViewport.scrollTop = panStart.top - (event.clientY - panStart.y);
+    mapViewport.scrollBy({ left: panStart.x - event.clientX, top: panStart.y - event.clientY });
+    panStart = { x: event.clientX, y: event.clientY };
   }
 });
 const stopMapPan = (event) => {
@@ -142,7 +145,7 @@ const stopMapPan = (event) => {
   if (mapViewport.hasPointerCapture(event.pointerId)) mapViewport.releasePointerCapture(event.pointerId);
   pinchStart = null;
   const remaining = [...activePointers.values()][0];
-  panStart = remaining ? { x: remaining.x, y: remaining.y, left: mapViewport.scrollLeft, top: mapViewport.scrollTop } : null;
+  panStart = remaining ? { x: remaining.x, y: remaining.y } : null;
   if (!remaining) mapViewport.classList.remove("is-panning");
 };
 mapViewport.addEventListener("pointerup", stopMapPan);
