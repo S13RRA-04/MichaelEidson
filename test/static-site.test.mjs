@@ -6,6 +6,7 @@ const homePath = new URL("../author-site/dist/index.html", import.meta.url);
 const lorePath = new URL("../author-site/dist/lore/index.html", import.meta.url);
 const eladriaPath = new URL("../author-site/dist/eladria/index.html", import.meta.url);
 const eladriaScriptPath = new URL("../author-site/dist/eladria/eladria.js", import.meta.url);
+const stylesPath = new URL("../author-site/dist/styles.css", import.meta.url);
 
 test("homepage exposes the real contact address and lore journey", async () => {
   const html = await readFile(homePath, "utf8");
@@ -21,9 +22,10 @@ test("homepage exposes the real contact address and lore journey", async () => {
 });
 
 test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light characters", async () => {
-  const [html, script] = await Promise.all([
+  const [html, script, styles] = await Promise.all([
     readFile(eladriaPath, "utf8"),
-    readFile(eladriaScriptPath, "utf8")
+    readFile(eladriaScriptPath, "utf8"),
+    readFile(stylesPath, "utf8")
   ]);
 
   assert.match(html, /eladria-map\.jpg/);
@@ -82,6 +84,8 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /Lorcans?[^<]*Uhuran half-sister|Lorcan's Uhuran half-sister/);
   assert.match(html, /\.\/sela\.jpg/);
   assert.match(html, /alt="Sela seated watchfully in the dark uniform and traveling coat of a veteran soldier"/);
+  assert.match(styles, /\.character-portrait\{[^}]*aspect-ratio:5\/6/);
+  assert.match(styles, /\.character-portrait img\{[^}]*object-position:center top/);
   assert.match(html, /class="atlas-index"/);
   assert.match(html, /id="chronicle"/);
   assert.match(html, /Enter Eladria by era and book/);
