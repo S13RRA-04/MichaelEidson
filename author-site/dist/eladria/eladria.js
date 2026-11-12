@@ -75,15 +75,55 @@ document.querySelectorAll("[data-era-filter], [data-book-filter]").forEach((cont
 applyChronicleFilter();
 let mapScale = 1;
 const mapCanvas = document.getElementById("map-canvas");
+const mapViewport = document.querySelector(".map-viewport");
 const mapZoom = document.getElementById("map-zoom");
-document.querySelectorAll("[data-map-action]").forEach((control) => control.addEventListener("click", () => {
-  if (control.dataset.mapAction === "in") mapScale = Math.min(2, mapScale + 0.25);
-  if (control.dataset.mapAction === "out") mapScale = Math.max(1, mapScale - 0.25);
-  if (control.dataset.mapAction === "reset") mapScale = 1;
+const setMapScale = (nextScale, focalX = mapViewport.clientWidth / 2, focalY = mapViewport.clientHeight / 2) => {
+  const previousScale = mapScale;
+  mapScale = Math.min(3, Math.max(1, Math.round(nextScale * 4) / 4));
+  const contentX = (mapViewport.scrollLeft + focalX) / previousScale;
+  const contentY = (mapViewport.scrollTop + focalY) / previousScale;
   mapCanvas.style.width = `${mapScale * 100}%`;
+  mapViewport.scrollLeft = contentX * mapScale - focalX;
+  mapViewport.scrollTop = contentY * mapScale - focalY;
   mapZoom.value = `${Math.round(mapScale * 100)}%`;
   mapZoom.textContent = mapZoom.value;
+};
+document.querySelectorAll("[data-map-action]").forEach((control) => control.addEventListener("click", () => {
+  if (control.dataset.mapAction === "in") setMapScale(mapScale + 0.25);
+  if (control.dataset.mapAction === "out") setMapScale(mapScale - 0.25);
+  if (control.dataset.mapAction === "reset") setMapScale(1);
 }));
+mapViewport.addEventListener("wheel", (event) => {
+  if (!event.ctrlKey && !event.metaKey) return;
+  event.preventDefault();
+  const bounds = mapViewport.getBoundingClientRect();
+  setMapScale(mapScale + (event.deltaY < 0 ? 0.25 : -0.25), event.clientX - bounds.left, event.clientY - bounds.top);
+}, { passive: false });
+mapViewport.addEventListener("keydown", (event) => {
+  if (event.key === "+" || event.key === "=") { event.preventDefault(); setMapScale(mapScale + 0.25); }
+  if (event.key === "-") { event.preventDefault(); setMapScale(mapScale - 0.25); }
+  if (event.key === "0") { event.preventDefault(); setMapScale(1); }
+});
+let panStart = null;
+mapViewport.addEventListener("pointerdown", (event) => {
+  if (event.button !== 0 || event.target.closest(".map-pin")) return;
+  panStart = { x: event.clientX, y: event.clientY, left: mapViewport.scrollLeft, top: mapViewport.scrollTop };
+  mapViewport.classList.add("is-panning");
+  mapViewport.setPointerCapture(event.pointerId);
+});
+mapViewport.addEventListener("pointermove", (event) => {
+  if (!panStart) return;
+  mapViewport.scrollLeft = panStart.left - (event.clientX - panStart.x);
+  mapViewport.scrollTop = panStart.top - (event.clientY - panStart.y);
+});
+const stopMapPan = (event) => {
+  if (!panStart) return;
+  panStart = null;
+  mapViewport.classList.remove("is-panning");
+  if (mapViewport.hasPointerCapture(event.pointerId)) mapViewport.releasePointerCapture(event.pointerId);
+};
+mapViewport.addEventListener("pointerup", stopMapPan);
+mapViewport.addEventListener("pointercancel", stopMapPan);
 const artifacts = {
   wellstone: { glyph: "W", className: "Emonantic crystal", name: "Wellstone", thesis: "Feeling, held.", description: "Crystal capable of storing a single emotional current. It lights lamps, powers engines, serves as currency, and carries a more dangerous purpose inside a charge.", use: "Power, trade, weaponry", status: "Common / regulated" },
   chargers: { glyph: "C", className: "Emonantic firearm", name: "Chargers", thesis: "Emotion, fired.", description: "Firearms loaded with wellstone. The current inside determines the effect: fear can break resolve, surprise can stun, and anger can tear flesh.", use: "Military and law", status: "Controlled armament" },
