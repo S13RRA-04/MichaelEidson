@@ -1,25 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#121815" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2ec">
   <meta name="description" content="Explore Eladria through an interactive map, artifacts, and spoiler-light character dossiers from The Eightfold Covenant." />
   <meta property="og:title" content="Explore Eladria | The Eightfold Covenant" />
   <meta property="og:description" content="Open the map, examine the relics, and meet the people at the heart of The Mercy of Ruin." />
   <meta property="og:image" content="./eladria-map.jpg" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://michaeleidson.com/eladria/" />
   <title>Explore Eladria | The Eightfold Covenant</title>
+  <link rel="canonical" href="https://michaeleidson.com/eladria/">
   <link rel="icon" href="../mark.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Source+Sans+3:wght@400;600&display=swap">
   <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../editorial.css" />
+  <link rel="stylesheet" href="./eladria-theme.css" />
 </head>
 <body class="eladria-page">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="wordmark" href="/" aria-label="Michael Eidson, home"><span class="wordmark-mark"><img src="../mark.svg" alt="" /></span><span><strong>Michael Eidson</strong><small>Author of The Eightfold Covenant</small></span></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
-    <nav id="main-nav" aria-label="Main navigation"><a href="#map">Map</a><a href="#characters">Characters</a><a href="#artifacts">Artifacts</a><a href="#attunement">Attunement</a><a href="/lore/">Field guide</a><a class="nav-cta" href="/">Author site <span aria-hidden="true">&#8599;</span></a></nav>
-  </header>
+  <div class="wrap atlas-masthead">
+    <header class="site-header">
+      <a class="wordmark" href="/">Michael Eidson</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/#books">Books</a></li>
+          <li><a href="/eladria/" aria-current="page">Eladria</a></li>
+          <li><a href="/lore/">Field guide</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <hr class="rule">
+  </div>
   <main id="main">
     <section class="atlas-hero">
       <div class="atlas-hero-copy reveal"><p class="eyebrow brass">The world beyond the page</p><h1>Explore<br /><em>Eladria.</em></h1><p>Open the map. Follow the roads. Examine the objects people would kill to possess, and meet the travelers caught in their wake.</p><div class="hero-actions"><a class="button" href="#map">Enter the atlas <span aria-hidden="true">&#8595;</span></a><a class="text-link light" href="/lore/">Read the field guide</a></div></div>
@@ -103,7 +120,27 @@
     </section>
     <section class="atlas-cta reveal"><p class="eyebrow brass">The map is only the beginning</p><h2>Walk into the story.</h2><p><em>The Mercy of Ruin</em> &middot; Book One of The Eightfold Covenant</p><div><a class="button brass-button" href="https://www.amazon.com/Mercy-Ruin-Book-Eightfold-Covenant-ebook/dp/B0HPYVZHXL?th=1" target="_blank" rel="noopener noreferrer">Read on Amazon <span aria-hidden="true">&#8599;</span></a><a class="text-link light" href="/lore/">Continue to the field guide</a></div></section>
   </main>
-  <footer><a class="wordmark" href="/"><span class="wordmark-mark"><img src="../mark.svg" alt="" /></span><span><strong>Michael Eidson</strong><small>Epic fantasy with a frontier soul</small></span></a><p>&copy; <span id="year"></span> Michael Eidson. All rights reserved.</p><div class="footer-links"><a class="text-link light" href="https://www.patreon.com/MichaelEidson" target="_blank" rel="noopener noreferrer">Patreon</a><a class="text-link light" href="mailto:contact@michaeleidson.com">Contact</a><a class="text-link light" href="#main">Back to top &#8593;</a></div></footer>
-  <script src="../script.js"></script><script src="./eladria.js"></script>
+  <footer class="site-footer">
+    <div class="wrap footer-main">
+      <div class="row row--between">
+        <div class="stack footer-follow">
+          <h2 class="h3">Continue the expedition</h2>
+          <p>Field notes, work on <em>The Ruin of Nations</em>, and further discoveries from Eladria.</p>
+          <p><a href="https://www.patreon.com/MichaelEidson" rel="noopener">Join me on Patreon &rarr;</a></p>
+        </div>
+        <div class="stack footer-contact">
+          <p class="footer-label">Readers, booksellers, and press</p>
+          <a class="footer-email" href="mailto:contact@michaeleidson.com">contact@michaeleidson.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="footer-bar">
+        <p>&copy; 2026 Michael Eidson</p>
+        <nav aria-label="Elsewhere"><ul><li><a href="/">Author site</a></li><li><a href="/lore/">Field guide</a></li><li><a href="#main">Back to top &uarr;</a></li></ul></nav>
+      </div>
+    </div>
+  </footer>
+  <script src="./eladria.js"></script>
 </body>
 </html>

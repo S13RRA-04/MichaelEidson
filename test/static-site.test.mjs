@@ -138,6 +138,21 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(script, /Attunement complete/);
 });
 
+test("Eladria shares the editorial theme without loading the legacy page script", async () => {
+  const html = await readFile(eladriaPath, "utf8");
+  const theme = await readFile(new URL("../author-site/dist/eladria/eladria-theme.css", import.meta.url), "utf8");
+
+  assert.match(html, /href="\.\.\/editorial\.css"/);
+  assert.match(html, /href="\.\/eladria-theme\.css"/);
+  assert.match(html, /class="site-nav"/);
+  assert.match(html, /aria-current="page">Eladria/);
+  assert.doesNotMatch(html, /src="\.\.\/script\.js"/);
+  assert.match(html, /src="\.\/eladria\.js"/);
+  assert.match(theme, /\.map-pin:hover/);
+  assert.match(theme, /\.attunement-section/);
+  assert.match(theme, /\.character-card/);
+});
+
 test("lore page contains published canon and no newsletter placeholder", async () => {
   const html = await readFile(lorePath, "utf8");
 
