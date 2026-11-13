@@ -149,3 +149,42 @@ test("lore page contains published canon and no newsletter placeholder", async (
   assert.match(html, /Safe for new readers/);
   assert.doesNotMatch(html, /newsletter|mailing list|subscribe/i);
 });
+
+const editorialStylesPath = new URL("../author-site/dist/editorial.css", import.meta.url);
+
+test("homepage and lore use the editorial stylesheet without the legacy script", async () => {
+  const [home, lore, css] = await Promise.all([
+    readFile(homePath, "utf8"),
+    readFile(lorePath, "utf8"),
+    readFile(editorialStylesPath, "utf8")
+  ]);
+
+  assert.match(home, /href="\.\/editorial\.css"/);
+  assert.match(lore, /href="\.\.\/editorial\.css"/);
+  // script.js expects legacy markup (#year, .nav-toggle) and throws without it.
+  for (const html of [home, lore]) {
+    assert.doesNotMatch(html, /script\.js/);
+    assert.doesNotMatch(html, /styles\.css/);
+    assert.match(html, /class="skip-link" href="#main"/);
+    assert.match(html, /<main id="main">/);
+  }
+  assert.match(css, /\[hidden\] \{ display: none !important; \}/);
+});
+
+test("every class used by the editorial pages is defined in editorial.css", async () => {
+  const [home, lore, css] = await Promise.all([
+    readFile(homePath, "utf8"),
+    readFile(lorePath, "utf8"),
+    readFile(editorialStylesPath, "utf8")
+  ]);
+  const used = new Set();
+  for (const html of [home, lore]) {
+    for (const [, list] of html.matchAll(/class="([^"]+)"/g)) {
+      list.split(/\s+/).forEach((name) => used.add(name));
+    }
+  }
+  // Modifiers that only exist to be selected by a parent rule.
+  const allowed = new Set(["primary", "status"]);
+  const missing = [...used].filter((name) => !allowed.has(name) && !css.includes(`.${name}`));
+  assert.deepEqual(missing, []);
+});
