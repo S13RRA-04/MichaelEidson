@@ -93,7 +93,7 @@ test("Eladria explorer exposes an interactive map, artifacts, and spoiler-light 
   assert.match(html, /data-book-filter="book-1"/);
   assert.match(html, /Book Two/);
   assert.match(html, /The Ruin of Nations/);
-  assert.match(html, /Expedition forthcoming/);
+  assert.match(html, /25 locations available/);
   assert.match(script, /const currentChronicle = \{ era: "era-1"/);
   assert.match(script, /applyChronicleFilter/);
   assert.match(script, /pin\.dataset\.book/);
@@ -151,6 +151,23 @@ test("Eladria shares the editorial theme without loading the legacy page script"
   assert.match(theme, /\.map-pin:hover/);
   assert.match(theme, /\.attunement-section/);
   assert.match(theme, /\.character-card/);
+});
+
+test("Eladria exposes the Mapwright Ruin of Nations atlas as Book Two", async () => {
+  const [html, script, bookTwo] = await Promise.all([
+    readFile(eladriaPath, "utf8"),
+    readFile(eladriaScriptPath, "utf8"),
+    readFile(new URL("../author-site/dist/eladria/mapwright-book2.js", import.meta.url), "utf8")
+  ]);
+
+  assert.match(html, /data-book-filter="book-2"/);
+  assert.doesNotMatch(html, /data-book-filter="book-2"[^>]*disabled/);
+  assert.match(html, /mapwright-book2\.js/);
+  assert.match(bookTwo, /eladria-ruin-of-nations\.png/);
+  assert.match(script, /map-pin-book-two/);
+  assert.match(bookTwo, /"atlas": "The Ruin of Nations"/);
+  assert.match(bookTwo, /"name": "Northcross"/);
+  assert.match(bookTwo, /"name": "Havenbrook"/);
 });
 
 test("lore page contains published canon and no newsletter placeholder", async () => {

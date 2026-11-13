@@ -5,6 +5,7 @@
   "scripts": {
     "deploy": "wrangler deploy",
     "deploy:check": "wrangler deploy --dry-run",
+    "mapwright:sync": "node scripts/export-mapwright-atlas.mjs Mapwright/the-ruin-of-nations.json author-site/dist/eladria/eladria-ruin-of-nations.png && node scripts/sync-mapwright-atlas.mjs Mapwright/the-ruin-of-nations.json author-site/dist/eladria/mapwright-book2.js",
     "test": "node --test"
   },
   "devDependencies": {

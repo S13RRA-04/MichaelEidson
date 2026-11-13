@@ -16,6 +16,24 @@ const locations = {
 };
 const currentChronicle = { era: "era-1", eraLabel: "Era One", book: "book-1", bookLabel: "Book One", title: "The Mercy of Ruin" };
 Object.entries(locations).forEach(([key, location]) => { locations[key] = { ...currentChronicle, ...location }; });
+const bookTwoChronicle = { era: "era-1", eraLabel: "Era One", book: "book-2", bookLabel: "Book Two", title: "The Ruin of Nations" };
+const bookTwoAtlas = window.mapwrightBook2;
+const knownBookTwoDetails = {
+  oasis: locations.oasis,
+  trivera: locations.trivera,
+  verimere: locations.verimere,
+  "brima-bastia": locations["brima-bastia"],
+  respus: locations.respus,
+  divinae: locations.divinae,
+  aperito: locations.aperito,
+  marinport: locations.marinport,
+  havenbrook: locations.havenbrook,
+  wardengate: locations.wardengate,
+  uigeschan: locations.uigeschan,
+  ceolpurt: locations.ceolpurt,
+  "dom-mendacium": locations["dom-mendacium"],
+  "zions-vale": locations["zions-vale"]
+};
 const domMendaciumPin = document.createElement("button");
 domMendaciumPin.className = "map-pin";
 domMendaciumPin.type = "button";
@@ -25,6 +43,27 @@ domMendaciumPin.style.setProperty("--x", "20.35%");
 domMendaciumPin.style.setProperty("--y", "13.32%");
 domMendaciumPin.append(document.createElement("span"));
 document.getElementById("map-canvas").append(domMendaciumPin);
+bookTwoAtlas.locations.forEach((place) => {
+  const key = `book2-${place.id}`;
+  const known = knownBookTwoDetails[place.id];
+  locations[key] = {
+    ...(known ?? {}),
+    ...bookTwoChronicle,
+    name: place.name,
+    region: known?.region ?? `${place.type[0].toUpperCase()}${place.type.slice(1)} · Mapwright record`,
+    description: known?.description ?? "A newly charted location in the Book Two atlas. Further field notes remain sealed until the expedition reaches it.",
+    index: place.index
+  };
+  const pin = document.createElement("button");
+  pin.className = "map-pin map-pin-book-two";
+  pin.type = "button";
+  pin.dataset.location = key;
+  pin.setAttribute("aria-label", `Open Book Two field note for ${place.name}`);
+  pin.style.setProperty("--x", `${place.x}%`);
+  pin.style.setProperty("--y", `${place.y}%`);
+  pin.append(document.createElement("span"));
+  document.getElementById("map-canvas").append(pin);
+});
 const mapPins = [...document.querySelectorAll(".map-pin")];
 mapPins.forEach((pin) => {
   const location = locations[pin.dataset.location];
@@ -50,7 +89,17 @@ const openLocation = (pin) => {
 mapPins.forEach((pin) => pin.addEventListener("click", () => openLocation(pin)));
 
 const chronicleSelection = { era: "era-1", book: "book-1" };
+const mapImage = document.querySelector("#map-canvas > img");
+const mapSources = {
+  "book-1": { src: "./eladria-map.jpg", alt: "Map of Eladria during The Mercy of Ruin" },
+  "book-2": { src: bookTwoAtlas.image, alt: "Mapwright map of Eladria during The Ruin of Nations" }
+};
 const applyChronicleFilter = () => {
+  const source = mapSources[chronicleSelection.book];
+  if (mapImage.getAttribute("src") !== source.src) {
+    mapImage.src = source.src;
+    mapImage.alt = source.alt;
+  }
   const visiblePins = mapPins.filter((pin) => {
     const visible = pin.dataset.era === chronicleSelection.era && pin.dataset.book === chronicleSelection.book;
     pin.hidden = !visible;
