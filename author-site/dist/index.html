@@ -1,157 +1,186 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#121815" />
-  <meta name="description" content="Michael Eidson writes epic fantasy with a frontier soul. Discover The Mercy of Ruin, Book One of The Eightfold Covenant." />
-  <meta property="og:title" content="Michael Eidson | Epic Fantasy Author" />
-  <meta property="og:description" content="Flawed heroes. Impossible choices. Ancient power with a price." />
-  <meta property="og:image" content="./the-mercy-of-ruin.jpg" />
-  <meta property="og:type" content="website" />
-  <title>Michael Eidson | Epic Fantasy with a Frontier Soul</title>
-  <link rel="icon" href="./mark.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="./styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2ec">
+  <title>Michael Eidson — Author of The Mercy of Ruin</title>
+  <meta name="description" content="Michael Eidson writes epic fantasy with a frontier soul. The Mercy of Ruin, Book One of The Eightfold Covenant, is out now.">
+  <link rel="canonical" href="https://michaeleidson.com/">
+  <link rel="icon" href="./mark.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Michael Eidson">
+  <meta property="og:title" content="The Mercy of Ruin — Michael Eidson">
+  <meta property="og:description" content="He walked away from the law to escape his past. Then the past came looking for him.">
+  <meta property="og:url" content="https://michaeleidson.com/">
+  <meta property="og:image" content="https://michaeleidson.com/the-mercy-of-ruin.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Source+Sans+3:wght@400;600&display=swap">
+  <link rel="stylesheet" href="./editorial.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://michaeleidson.com/#author",
+        "name": "Michael Eidson",
+        "url": "https://michaeleidson.com/",
+        "image": "https://michaeleidson.com/michael-eidson.png",
+        "jobTitle": "Novelist",
+        "sameAs": [
+          "https://www.amazon.com/author/michaeleidson",
+          "https://www.patreon.com/MichaelEidson"
+        ]
+      },
+      {
+        "@type": "Book",
+        "name": "The Mercy of Ruin",
+        "author": { "@id": "https://michaeleidson.com/#author" },
+        "image": "https://michaeleidson.com/the-mercy-of-ruin.jpg",
+        "genre": "Epic fantasy",
+        "isPartOf": { "@type": "BookSeries", "name": "The Eightfold Covenant" },
+        "position": 1,
+        "url": "https://www.amazon.com/Mercy-Ruin-Book-Eightfold-Covenant-ebook/dp/B0HPYVZHXL"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="wordmark" href="#top" aria-label="Michael Eidson, home">
-      <span class="wordmark-mark"><img src="./mark.svg" alt="" /></span>
-      <span><strong>Michael Eidson</strong><small>Author of The Eightfold Covenant</small></span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
-    <nav id="main-nav" aria-label="Main navigation">
-      <a href="#novel">The novel</a>
-      <a href="#author">The author</a>
-      <a href="/eladria/">Explore Eladria</a>
-      <a href="/lore/">Field guide</a>
-      <a href="#contact">Contact</a>
-      <a class="nav-cta" href="https://www.amazon.com/author/michaeleidson" target="_blank" rel="noopener noreferrer">Amazon <span aria-hidden="true">↗</span></a>
-    </nav>
-  </header>
+
+  <div class="wrap">
+    <header class="site-header">
+      <a class="wordmark" href="/">Michael Eidson</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#books">Books</a></li>
+          <li><a href="/eladria/">Eladria</a></li>
+          <li><a href="/lore/">Field guide</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <hr class="rule">
+  </div>
 
   <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-copy reveal">
-        <p class="eyebrow">Stories forged at the edge of the known world</p>
-        <h1>Epic fantasy<br />with a <em>frontier soul.</em></h1>
-        <p class="hero-intro">Flawed heroes. Impossible choices. Ancient power with a price.</p>
-        <div class="hero-actions">
-          <a class="button" href="#novel">Enter the story <span aria-hidden="true">↓</span></a>
-          <a class="text-link light" href="#author">Meet Michael</a>
+
+    <!-- The book -->
+    <section class="wrap section" aria-labelledby="book-title">
+      <div class="row row--center row--between">
+        <div class="hero-copy stack">
+          <p class="meta">The Eightfold Covenant, Book One</p>
+          <h1 id="book-title" class="title">The Mercy of Ruin</h1>
+          <p class="lede lede--italic">He walked away from the law to escape his past. Then the past came looking for him.</p>
+          <p class="prose prose--measure">When raiders burn Zion's Vale, former Sentinel Jovan Ga'al emerges from the flames with a mysterious medallion—and a forbidden power he once spent years policing.</p>
+          <p class="actions">
+            <a class="primary" href="https://www.amazon.com/Mercy-Ruin-Book-Eightfold-Covenant-ebook/dp/B0HPYVZHXL" rel="noopener">Buy on Amazon →</a>
+            <a href="#synopsis">Read the full synopsis</a>
+          </p>
         </div>
+        <figure class="hero-cover">
+          <img class="cover cover--hero" src="./the-mercy-of-ruin.jpg" width="938" height="1500"
+               alt="Cover of The Mercy of Ruin by Michael Eidson" fetchpriority="high">
+        </figure>
       </div>
-      <div class="hero-sigil reveal" aria-label="The Eightfold Covenant emblem" role="img">
-        <div class="compass-lines"></div>
-        <div class="sigil-ring"><img src="./mark.svg" alt="" /></div>
-        <p>The Eightfold<br />Covenant</p>
-      </div>
-      <div class="hero-meta"><span>Frontier fantasy</span><span>Book one is out now</span></div>
     </section>
 
-    <section class="declaration reveal" aria-label="Michael Eidson's storytelling perspective">
-      <span class="section-label">A field note</span>
-      <blockquote>The world is rarely divided between good people and bad people. It is divided between hard choices - and what they reveal.</blockquote>
+    <!-- Statement -->
+    <section class="band" aria-label="On the work">
+      <div class="wrap section">
+        <blockquote class="statement">“I write about dangerous frontiers, buried truths, and broken people discovering they are still capable of extraordinary things.”</blockquote>
+      </div>
     </section>
 
-    <aside class="series-dispatch reveal" aria-labelledby="series-dispatch-title">
-      <div class="dispatch-kicker">
-        <span class="dispatch-pulse" aria-hidden="true"></span>
-        <span>Dispatch from the frontier</span>
-      </div>
-      <div class="dispatch-copy">
-        <p class="eyebrow brass">The Eightfold Covenant continues</p>
-        <h2 id="series-dispatch-title">The next title is underway.</h2>
-        <p>Work has begun on the next novel in <em>The Eightfold Covenant</em>, tentatively titled <strong><em>The Ruin of Nations</em></strong>.</p>
-      </div>
-      <div class="dispatch-status" aria-label="Project status">
-        <span>Status</span>
-        <strong>In progress</strong>
-        <small>Title subject to change</small>
-      </div>
-    </aside>
-
-    <section class="novel" id="novel">
-      <div class="section-heading reveal">
-        <div><span class="section-index">01</span><p class="eyebrow">The first expedition</p></div>
-        <h2>Mercy has a cost.<br />Ruin has a memory.</h2>
-      </div>
-      <article class="book-feature reveal">
-        <a class="book-cover-link" href="https://www.amazon.com/Mercy-Ruin-Book-Eightfold-Covenant-ebook/dp/B0HPYVZHXL" target="_blank" rel="noopener noreferrer" aria-label="View The Mercy of Ruin on Amazon">
-          <span class="book-number">Book I</span>
-          <img class="book-cover" src="./the-mercy-of-ruin.jpg" alt="Cover of The Mercy of Ruin by Michael Eidson" />
-        </a>
-        <div class="book-copy">
-          <p class="eyebrow rust">The Eightfold Covenant</p>
-          <h3>The Mercy<br />of Ruin</h3>
-          <p class="lede">He walked away from the law to escape his past. Then the past came looking for him.</p>
-          <p>When raiders burn Zion's Vale, former Sentinel Jovan Ga'al emerges from the flames with a mysterious medallion - and a forbidden power he once spent years policing. Far away, sheltered Dreamer Eazra Horama sees an impossible darkness spreading through visions of a forgotten age.</p>
-          <p>As their paths converge, ancient relics resurface, old enemies begin to move, and the magic civilization depends upon reveals a darker cost.</p>
-          <a class="button dark" href="https://www.amazon.com/Mercy-Ruin-Book-Eightfold-Covenant-ebook/dp/B0HPYVZHXL" target="_blank" rel="noopener noreferrer">Get the book on Amazon <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-    </section>
-
-    <section class="author" id="author">
-      <div class="portrait-wrap reveal">
-        <div class="portrait-stamp">Veteran<br />Journalist<br />Investigator<br />Storyteller</div>
-        <img src="./michael-eidson.png" alt="Author Michael Eidson smiling in a warm, rustic setting" />
-      </div>
-      <div class="author-copy reveal">
-        <span class="section-index">02</span>
-        <p class="eyebrow brass">Behind the stories</p>
-        <h2>I have always been drawn to the places where character is tested.</h2>
-        <p>I'm Michael Eidson - a U.S. Navy veteran, former combat journalist, criminal investigator, endurance athlete, outdoorsman, and now novelist.</p>
-        <p>My stories draw from classic Westerns, military history, and mythology. I write about dangerous frontiers, buried truths, and broken people discovering they are still capable of extraordinary things.</p>
-        <p class="signature">Michael Eidson</p>
-        <div class="author-links">
-          <a class="text-link light" href="/lore/">Explore The Eightfold Covenant <span aria-hidden="true">→</span></a>
-          <a class="text-link light" href="https://www.amazon.com/author/michaeleidson" target="_blank" rel="noopener noreferrer">Follow me on Amazon <span aria-hidden="true">↗</span></a>
-          <a class="text-link light" href="https://www.patreon.com/MichaelEidson" target="_blank" rel="noopener noreferrer">Join me on Patreon <span aria-hidden="true">↗</span></a>
+    <!-- About -->
+    <section id="about" class="wrap section" aria-labelledby="about-title">
+      <div class="row row--top">
+        <figure class="portrait">
+          <img src="./michael-eidson.png" width="1254" height="1254" alt="Portrait of Michael Eidson" loading="lazy">
+        </figure>
+        <div class="col-main stack about-copy">
+          <p class="meta">About</p>
+          <h2 id="about-title" class="h2 h2--sm">Michael Eidson</h2>
+          <p class="prose">A U.S. Navy veteran, former combat journalist, criminal investigator, endurance athlete, and outdoorsman—now a novelist. His stories draw from classic Westerns, military history, and mythology.</p>
+          <p class="prose">He has always been drawn to the places where character is tested. <em>The Mercy of Ruin</em> is his first novel.</p>
         </div>
       </div>
     </section>
 
-    <section class="true-north" id="true-north">
-      <div class="section-heading reveal">
-        <div><span class="section-index">03</span><p class="eyebrow">The compass behind the work</p></div>
-        <h2>True north.</h2>
+    <div class="wrap"><hr class="rule"></div>
+
+    <!-- Books -->
+    <section id="books" class="wrap section--sm" aria-labelledby="books-title">
+      <div class="row row--top">
+        <div class="col-side col-side--narrow">
+          <p class="meta">Books</p>
+          <h2 id="books-title" class="h3 h3--light">The Eightfold Covenant</h2>
+        </div>
+        <ol class="col-main numbered">
+          <li id="synopsis">
+            <span class="numeral" aria-hidden="true">I.</span>
+            <div class="stack stack--tight">
+              <h3 class="h3">The Mercy of Ruin</h3>
+              <p class="prose prose--sm">Far away, sheltered Dreamer Eazra Horama sees an impossible darkness spreading through visions of a forgotten age. As their paths converge, ancient relics resurface, old enemies begin to move, and the magic civilization depends upon reveals a darker cost.</p>
+              <p class="actions actions--sm">
+                <span class="status">Available now</span>
+                <a href="https://www.amazon.com/Mercy-Ruin-Book-Eightfold-Covenant-ebook/dp/B0HPYVZHXL" rel="noopener">Amazon Kindle →</a>
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="numeral" aria-hidden="true">II.</span>
+            <div class="stack stack--tight">
+              <h3 class="h3 h3--muted">The Ruin of Nations</h3>
+              <p class="status">In progress. Work has begun on the next novel, tentatively titled <em>The Ruin of Nations</em>.</p>
+            </div>
+          </li>
+        </ol>
       </div>
-      <div class="principles">
-        <article class="principle reveal"><span>01</span><h3>Character before spectacle.</h3><p>Magic matters most when it costs someone something.</p></article>
-        <article class="principle reveal"><span>02</span><h3>Mercy is never simple.</h3><p>The right choice and the easy choice rarely share a road.</p></article>
-        <article class="principle reveal"><span>03</span><h3>The past keeps receipts.</h3><p>History is not backdrop. It is pressure, inheritance, and consequence.</p></article>
-        <article class="principle reveal"><span>04</span><h3>Hope must be earned.</h3><p>Even broken people can do extraordinary things - but never for free.</p></article>
+      <div class="world-links">
+        <p class="prose"><em>New to Eladria?</em></p>
+        <p class="actions">
+          <a href="/eladria/">Explore the interactive map →</a>
+          <a href="/lore/">Read the spoiler-light field guide →</a>
+        </p>
       </div>
     </section>
 
-    <section class="closing reveal">
-      <p class="eyebrow brass">Your next journey</p>
-      <h2>The vale is burning.<br />The covenant is waking.</h2>
-      <a class="button brass-button" href="https://www.amazon.com/Mercy-Ruin-Book-Eightfold-Covenant-ebook/dp/B0HPYVZHXL" target="_blank" rel="noopener noreferrer">Begin The Mercy of Ruin <span aria-hidden="true">↗</span></a>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="contact-copy reveal">
-        <span class="section-index">04</span>
-        <p class="eyebrow brass">Correspondence</p>
-        <h2>For readers, booksellers, and press.</h2>
-      </div>
-      <div class="contact-card reveal">
-        <p>Questions about <em>The Mercy of Ruin</em>, event invitations, interviews, and professional inquiries are welcome.</p>
-        <a class="contact-address" href="mailto:contact@michaeleidson.com">contact@michaeleidson.com</a>
-        <p class="contact-note">Reader mail is read with gratitude. Response times may vary while the next journey is being written.</p>
-      </div>
-    </section>
   </main>
 
-  <footer>
-    <a class="wordmark" href="#top"><span class="wordmark-mark"><img src="./mark.svg" alt="" /></span><span><strong>Michael Eidson</strong><small>Epic fantasy with a frontier soul</small></span></a>
-    <p>© <span id="year"></span> Michael Eidson. All rights reserved.</p>
-    <div class="footer-links"><a class="text-link light" href="https://www.patreon.com/MichaelEidson" target="_blank" rel="noopener noreferrer">Patreon</a><a class="text-link light" href="mailto:contact@michaeleidson.com">Contact</a><a class="text-link light" href="#top">Back to top ↑</a></div>
+  <footer id="contact" class="site-footer">
+    <div class="wrap footer-main">
+      <div class="row row--between">
+        <div class="stack footer-follow">
+          <h2 class="h3">Follow the work</h2>
+          <p>Behind-the-scenes notes on The Ruin of Nations and the world of Eladria.</p>
+          <p><a href="https://www.patreon.com/MichaelEidson" rel="noopener">Join me on Patreon →</a></p>
+        </div>
+        <div class="stack footer-contact">
+          <p class="footer-label">Readers, booksellers, and press</p>
+          <a class="footer-email" href="mailto:contact@michaeleidson.com">contact@michaeleidson.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="footer-bar">
+        <p>© 2026 Michael Eidson</p>
+        <nav aria-label="Elsewhere">
+          <ul>
+            <li><a href="https://www.amazon.com/author/michaeleidson" rel="noopener">Amazon</a></li>
+            <li><a href="https://www.patreon.com/MichaelEidson" rel="noopener">Patreon</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </footer>
-  <script src="./script.js"></script>
 </body>
 </html>
